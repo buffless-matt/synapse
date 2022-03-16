@@ -118,3 +118,25 @@ class UserMediaStatisticsRestServlet(RestServlet):
             ret["next_token"] = start + len(users_media)
 
         return HTTPStatus.OK, ret
+
+
+class UserMessageEventsStatisticsRestServlet(RestServlet):
+    """
+    Get statistics about message events sent by users.
+    """
+
+    PATTERNS = admin_patterns("/statistics/users/message_events$")
+
+    def __init__(self, hs: "HomeServer"):
+        self.auth = hs.get_auth()
+        self.store = hs.get_datastores().main
+
+    async def on_GET(self, request: SynapseRequest) -> Tuple[int, JsonDict]:
+        await assert_requester_is_admin(self.auth, request)
+
+        # TODO
+        ret = {
+            "message": "Hello world!"
+        }
+
+        return HTTPStatus.OK, ret

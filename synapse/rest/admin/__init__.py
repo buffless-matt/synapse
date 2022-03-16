@@ -69,7 +69,10 @@ from synapse.rest.admin.rooms import (
     RoomStateRestServlet,
 )
 from synapse.rest.admin.server_notice_servlet import SendServerNoticeServlet
-from synapse.rest.admin.statistics import UserMediaStatisticsRestServlet
+from synapse.rest.admin.statistics import (
+    UserMediaStatisticsRestServlet,
+    UserMessageEventsStatisticsRestServlet
+)
 from synapse.rest.admin.username_available import UsernameAvailableRestServlet
 from synapse.rest.admin.users import (
     AccountDataRestServlet,
@@ -256,6 +259,7 @@ def register_servlets(hs: "HomeServer", http_server: HttpServer) -> None:
     DevicesRestServlet(hs).register(http_server)
     DeleteDevicesRestServlet(hs).register(http_server)
     UserMediaStatisticsRestServlet(hs).register(http_server)
+    UserMessageEventsStatisticsRestServlet(hs).register(http_server)
     EventReportDetailRestServlet(hs).register(http_server)
     EventReportsRestServlet(hs).register(http_server)
     AccountDataRestServlet(hs).register(http_server)
