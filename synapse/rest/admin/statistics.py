@@ -120,12 +120,12 @@ class UserMediaStatisticsRestServlet(RestServlet):
         return HTTPStatus.OK, ret
 
 
-class UserMessageEventsStatisticsRestServlet(RestServlet):
+class UserEventsStatisticsRestServlet(RestServlet):
     """
-    Get statistics about message events sent by users.
+    Get statistics about events sent by users.
     """
 
-    PATTERNS = admin_patterns("/statistics/users/message_events$")
+    PATTERNS = admin_patterns("/statistics/users/events$")
 
     def __init__(self, hs: "HomeServer"):
         self.auth = hs.get_auth()
